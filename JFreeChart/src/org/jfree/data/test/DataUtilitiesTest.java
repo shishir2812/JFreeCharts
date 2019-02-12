@@ -175,5 +175,14 @@ public class DataUtilitiesTest {
 		// tear-down: NONE in this test method
 	}
 	
+	
+	//tests for createNumberArray2D
+	@Test(expected = InvalidParameterException.class)
+	public void createNumberArray2DNull() {
+		DataUtilities.createNumberArray2D(null);
+		// throws IllegalArgumentException instead 
+
+	}
+	
 
 }
