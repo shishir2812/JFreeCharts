@@ -13,7 +13,7 @@ import org.junit.Test;
 
 public class DataUtilitiesTest {
 	
-	//tests for calculateColumnTotal
+	//tests for calculateColumnTotal()
 	@Test(expected = InvalidParameterException.class)
 	public void calculateColumnTotalForNullTable() {
 		DataUtilities.calculateColumnTotal(null, 0);
