@@ -181,8 +181,54 @@ public class DataUtilitiesTest {
 	public void createNumberArray2DNull() {
 		DataUtilities.createNumberArray2D(null);
 		// throws IllegalArgumentException instead 
-
 	}
+	@Test(expected = InvalidParameterException.class)
+	public void createNumberArray2DEmpty() {
+		double a[][] = {{}};
+		DataUtilities.createNumberArray2D(a);
+		// throws an AssertionError instead 
+	}
+	@Test
+	public void createNumberArray2DValid() {
+		double a[][] = {
+				{1,2,3},
+				{1.5,2.5,3.5},
+				{-2,-1,0}
+		};
+		Number r[][] = DataUtilities.createNumberArray2D(a);
+		Number expected [][] = {
+				{1.0,2.0,3.0},
+				{1.5,2.5,3.5},
+				{-2.0,-1.0,0.0}
+		};
+		assertArrayEquals(expected, r);
+	}
+	@Test(expected = InvalidParameterException.class)
+	public void createNumberArray2DInnerNull() {
+		double a[][] = {
+				{1,2,3},
+				null,
+				{-2,-1,0}
+		};
+		DataUtilities.createNumberArray2D(a);
+		// throws IllegalArgumentException instead 
+	}
+	@Test
+	public void createNumberArray2DInnerEmpty() {
+		double a[][] = {
+				{1,2,3},
+				{},
+				{-2,-1,0}
+		};
+		Number r[][] = DataUtilities.createNumberArray2D(a);
+		Number expected [][] = {
+				{1.0,2.0,3.0},
+				{},
+				{-2.0,-1.0,0.0}
+		};
+		assertArrayEquals(expected, r);
+	}
+	
 	
 
 	
