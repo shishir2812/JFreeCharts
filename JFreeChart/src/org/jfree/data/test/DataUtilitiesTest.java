@@ -412,30 +412,18 @@ public class DataUtilitiesTest {
 	}
 
 	// tests for createNumberArray2D
-	@Test//(expected = InvalidParameterException.class)
+	@Test(expected = InvalidParameterException.class)
 	public void createNumberArray2DNull() {
-		try {
 		DataUtilities.createNumberArray2D(null);
-		}
-		catch(Exception e) {
-			assertEquals(InvalidParameterException.class, e.getClass());
-		}
 		// throws IllegalArgumentException instead
 	}
 
-	@Test
-	// if we use the @Test(expected = InvalidParameterException.class) notation,
-	// throws an AssertionError instead (because it didnt throw the expected exception)
+	@Test(expected = InvalidParameterException.class)
 
 	public void createNumberArray2DEmpty() {
 		double a[][] = { {} };
-		try {
-			DataUtilities.createNumberArray2D(a);
-			fail(); // if it reaches here, the expected exception was not thrown
-		}
-		catch(InvalidParameterException e) {
-			//this is expected
-		}
+		DataUtilities.createNumberArray2D(a);
+		// throws an AssertionError instead (because it didnt throw the expected exception)
 		
 	}
 
