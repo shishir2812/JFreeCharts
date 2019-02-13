@@ -149,8 +149,9 @@ public class RangeTest {
 		assertEquals("The expansion of (0,10) by margins (0.1,0)", expected, r);
 	}
 	
+	//tests for intersects()
 	@Test
-	public void test_Intersects_Provided_Lowebound_Less_Than_Upperbound()
+	public void test_Intersects_Provided_Lowerbound_Less_Than_Upperbound()
 	{
 		Range toTest = new Range(0, 10);
 		boolean result = toTest.intersects(2, 15);
@@ -200,7 +201,7 @@ public class RangeTest {
 	{
 		Range toTest = new Range(0, 10);
 		boolean result = toTest.intersects(-10, 1);
-		System.out.println(toTest);
+//		System.out.println(toTest);
 		assertEquals("Testing intersects() where the provided Upper bound > toTests lower bound", true, result);
 		toTest = null;
 	}
