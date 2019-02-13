@@ -1,6 +1,7 @@
 package org.jfree.data.test;
 
 import org.jfree.data.DataUtilities;
+import org.jfree.data.KeyedValues;
 import org.jfree.data.Values2D;
 
 import static org.junit.Assert.*;
@@ -276,6 +277,7 @@ public class DataUtilitiesTest {
 		});
 		// exercise
 		double result = DataUtilities.calculateRowTotal(values, -1);
+		
 		// verify
 		assertEquals(0, result, .000000001d);
 		// tear-down: NONE in this test method
@@ -439,9 +441,44 @@ public class DataUtilitiesTest {
 		// tear-down: NONE in this test method
 	}
 
-
-	
-
+	//tests for getCumulativePercentage
+	@Test(expected = InvalidParameterException.class)
+	public void getCumulativePercentageForNullTable() {
+		DataUtilities.getCumulativePercentages(null);
+		// throws NullPointerException instead
+	}
+	@Test
+	public void getCumulativePercentageNOM(){
+		//Setup
+		Mockery mockingContext = new Mockery();
+		final KeyedValues values = mockingContext.mock(KeyedValues.class);
+		mockingContext.checking(new Expectations() {
+			{
+				
+				one(values).getItemCount();
+				will(returnValue(6));
+				one(values).getIndex(0);
+								
+				one(values).getValue(0);
+				will(returnValue(1));
+				
+				one(values).getValue(1);
+				will(returnValue(0));
+				
+				one(values).getValue(2);
+				will(returnValue(0));
+				
+				
+			}
+		});
+				// exercise
+				KeyedValues result = DataUtilities.getCumulativePercentages(values);
+				System.out.println(result);
+				// verify
+				//assertEquals(0, result.getValue(0).doubleValue(), .000000001d);
+				// tear-down: NONE in this test method
+			
+	}
 
 
 }
