@@ -148,6 +148,166 @@ public class RangeTest {
 		Range expected = new Range(-1, 10);
 		assertEquals("The expansion of (0,10) by margins (0.1,0)", expected, r);
 	}
+	
+	@Test
+	public void test_Intersects_Provided_Lowebound_Less_Than_Upperbound()
+	{
+		Range toTest = new Range(0, 10);
+		boolean result = toTest.intersects(2, 15);
+		assertEquals("Testing intersects() where the provided lower bound < toTests upper bound", true, result);
+		toTest = null;
+	}
+	
+	@Test
+	public void test_Intersects_Provided_Lowerbound_Equal_To_Upperbound()
+	{
+		Range toTest = new Range(0, 10);
+		boolean result = toTest.intersects(10, 15);
+		assertEquals("Testing intersects() where the provided lower bound == toTests upper bound", true, result);
+		toTest = null;
+	}
+	
+	@Test
+	public void test_Intersects_Provided_Lowerbound_Greater_Than_Upperbound()
+	{
+		Range toTest = new Range(0, 10);
+		boolean result = toTest.intersects(11, 15);
+		assertEquals("Testing intersects() where the provided lower bound > toTests upper bound", false, result);
+		toTest = null;
+	}
+	
+	@Test
+	public void test_Intersects_provided_Upperbound_Less_Than_Lowerbound()
+	{
+		Range toTest = new Range(0, 10);
+		boolean result = toTest.intersects(-10, -5);
+		assertEquals("Testing intersects() where the provided Upper bound < toTests lower bound", false, result);
+		toTest = null;
+	}
+	
+	
+	@Test
+	public void test_Intersects_provided_Upperbound_Equal_To_Lowerbound()
+	{
+		Range toTest = new Range(0, 10);
+		boolean result = toTest.intersects(-10, 0);
+		assertEquals("Testing intersects() where the provided Upper bound == toTests lower bound", true, result);
+		toTest = null;
+	}
+	
+	@Test
+	public void test_Intersects_provided_Upperbound_Greater_Than_Lowerbound()
+	{
+		Range toTest = new Range(0, 10);
+		boolean result = toTest.intersects(-10, 1);
+		System.out.println(toTest);
+		assertEquals("Testing intersects() where the provided Upper bound > toTests lower bound", true, result);
+		toTest = null;
+	}
+	
+	@Test
+	public void test_Intersects_Provided_Range_Contained_Within_Range()
+	{
+		Range toTest = new Range(0, 10);
+		boolean result = toTest.intersects(4, 8);
+		assertEquals("Testing intersects() where the provided range is whithin toTests range", true, result);
+		toTest = null;
+	}
+	
+	@Test(expected=NullPointerException.class)
+	public void test_Shift_Null_Range()
+	{
+		Range toTest = null;
+		Range.shift(toTest, 5);
+	}
+	
+	@Test
+	public void test_Shift_Neither_Bound_Hits_Zero()
+	{
+		Range toTest = new Range(0, 10);
+		Range compare = new Range(5, 15);
+		toTest = Range.shift(toTest, 5);
+		assertEquals("Testing shift where the shift results in niether bound hitting zero:", compare, toTest);
+		toTest = null;
+		compare = null;
+	}
+	
+	@Test
+	public void test_Shift_Upper_Bound_Hits_Zero()
+	{
+		Range toTest = new Range(-20, -5);
+		Range compare = new Range(-10, 0);
+		toTest = Range.shift(toTest, 10);
+		assertEquals("Testing shift where the shift results in the upper bound hitting zero:", compare, toTest);
+		toTest = null;
+		compare = null;
+	}
+	
+	@Test
+	public void test_Shift_Lower_Bound_Hits_Zero()
+	{
+		Range toTest = new Range(-5, 5);
+		Range compare = new Range(0, 15);
+		toTest = Range.shift(toTest, 10);
+		assertEquals("Testing shift where the shift results in the lower bound hitting zero:", compare, toTest);
+		toTest = null;
+		compare = null;
+	}
+	
+	@Test
+	public void test_Shift_Both_Bounds_Hit_Zero()
+	{
+		Range toTest = new Range(-5, -1);
+		Range compare = new Range(0, 0);
+		toTest = Range.shift(toTest, 10);
+		assertEquals("Testing shift where the shift results in both bounds hitting zero:", compare, toTest);
+		toTest = null;
+		compare = null;
+	}
+	
+	@Test
+	public void test_Contains_Greater_Than_Upper()
+	{
+		Range toTest = new Range(-5.0, 10);
+		boolean result = toTest.contains(15);
+		assertEquals("Testing contains with a value greater than the upper bound of range", false, result);
+		toTest = null;
+	}
+	
+	@Test
+	public void test_Contains_Equal_To_Upper()
+	{
+		Range toTest = new Range(-5.0, 10);
+		boolean result = toTest.contains(10.0);
+		assertEquals("Testing contains with a value equal to the upper bound of range", true, result);
+		toTest = null;
+	}
+
+	@Test
+	public void test_Contains_In_Middle()
+	{
+		Range toTest = new Range(-5.0, 10);
+		boolean result = toTest.contains(3.0);
+		assertEquals("Testing contains with a value in the middle of the specified range:", true, result);
+		toTest = null;
+	}
+	
+	@Test
+	public void test_Contains_Equal_To_Lower()
+	{
+		Range toTest = new Range(-5.0, 10);
+		boolean result = toTest.contains(-5.0);
+		assertEquals("Testing contains with a value equal to the lower bound of range", true, result);
+		toTest = null;
+	}
+	@Test
+	public void test_Contains_Less_Than()
+	{
+		Range toTest = new Range(0, 10);
+		boolean result = toTest.contains(-5.0);
+		assertEquals("Testing contains() with a value that is less than the lower bound of range", false, result);
+		toTest = null;
+	}
 
 	
 	@After
