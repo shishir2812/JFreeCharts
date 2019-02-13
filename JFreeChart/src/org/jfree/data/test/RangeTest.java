@@ -26,7 +26,7 @@ public class RangeTest {
 		exampleRange4 = new Range(0.5, 1.5);
 		exampleRange5 = new Range(0, 10);
 	}
-	
+
 	//Tests for combine()
 	@Test
 	public void combineNullRanges(){
@@ -87,12 +87,12 @@ public class RangeTest {
 		Range expected = new Range(0, 2);
 		assertEquals("The combination of (0.5,1.5) and (0,2) ranges should be 0 to 2", expected, r);
 	}
-	
+
 	//Tests for expand()
 	@Test(expected = InvalidParameterException.class)
 	public void expandNullRange(){
-		 Range.expand(null,1,1);
-		 //it throws java.lang.IllegalArgumentException instead
+		Range.expand(null,1,1);
+		//it throws java.lang.IllegalArgumentException instead
 	}
 	@Test
 	public void expandMarginsBBandBB(){
@@ -148,7 +148,7 @@ public class RangeTest {
 		Range expected = new Range(-1, 10);
 		assertEquals("The expansion of (0,10) by margins (0.1,0)", expected, r);
 	}
-	
+
 	//tests for intersects()
 	@Test
 	public void test_Intersects_Provided_Lowerbound_Less_Than_Upperbound()
@@ -158,7 +158,7 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided lower bound < toTests upper bound", true, result);
 		toTest = null;
 	}
-	
+
 	@Test
 	public void test_Intersects_Provided_Lowerbound_Equal_To_Upperbound()
 	{
@@ -167,7 +167,7 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided lower bound == toTests upper bound", true, result);
 		toTest = null;
 	}
-	
+
 	@Test
 	public void test_Intersects_Provided_Lowerbound_Greater_Than_Upperbound()
 	{
@@ -176,7 +176,7 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided lower bound > toTests upper bound", false, result);
 		toTest = null;
 	}
-	
+
 	@Test
 	public void test_Intersects_provided_Upperbound_Less_Than_Lowerbound()
 	{
@@ -185,8 +185,8 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided Upper bound < toTests lower bound", false, result);
 		toTest = null;
 	}
-	
-	
+
+
 	@Test
 	public void test_Intersects_provided_Upperbound_Equal_To_Lowerbound()
 	{
@@ -195,17 +195,17 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided Upper bound == toTests lower bound", true, result);
 		toTest = null;
 	}
-	
+
 	@Test
 	public void test_Intersects_provided_Upperbound_Greater_Than_Lowerbound()
 	{
 		Range toTest = new Range(0, 10);
 		boolean result = toTest.intersects(-10, 1);
-//		System.out.println(toTest);
+		//		System.out.println(toTest);
 		assertEquals("Testing intersects() where the provided Upper bound > toTests lower bound", true, result);
 		toTest = null;
 	}
-	
+
 	@Test
 	public void test_Intersects_Provided_Range_Contained_Within_Range()
 	{
@@ -214,14 +214,14 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided range is whithin toTests range", true, result);
 		toTest = null;
 	}
-	
+
 	@Test(expected=NullPointerException.class)
 	public void test_Shift_Null_Range()
 	{
 		Range toTest = null;
 		Range.shift(toTest, 5);
 	}
-	
+
 	@Test
 	public void test_Shift_Neither_Bound_Hits_Zero()
 	{
@@ -232,7 +232,7 @@ public class RangeTest {
 		toTest = null;
 		compare = null;
 	}
-	
+
 	@Test
 	public void test_Shift_Upper_Bound_Hits_Zero()
 	{
@@ -243,7 +243,7 @@ public class RangeTest {
 		toTest = null;
 		compare = null;
 	}
-	
+
 	@Test
 	public void test_Shift_Lower_Bound_Hits_Zero()
 	{
@@ -254,7 +254,7 @@ public class RangeTest {
 		toTest = null;
 		compare = null;
 	}
-	
+
 	@Test
 	public void test_Shift_Both_Bounds_Hit_Zero()
 	{
@@ -265,7 +265,7 @@ public class RangeTest {
 		toTest = null;
 		compare = null;
 	}
-	
+
 	@Test
 	public void test_Contains_Greater_Than_Upper()
 	{
@@ -274,7 +274,7 @@ public class RangeTest {
 		assertEquals("Testing contains with a value greater than the upper bound of range", false, result);
 		toTest = null;
 	}
-	
+
 	@Test
 	public void test_Contains_Equal_To_Upper()
 	{
@@ -292,7 +292,7 @@ public class RangeTest {
 		assertEquals("Testing contains with a value in the middle of the specified range:", true, result);
 		toTest = null;
 	}
-	
+
 	@Test
 	public void test_Contains_Equal_To_Lower()
 	{
@@ -310,7 +310,7 @@ public class RangeTest {
 		toTest = null;
 	}
 
-	
+
 	@After
 	public void tearDown() throws Exception {
 	}
