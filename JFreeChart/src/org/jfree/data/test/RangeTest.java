@@ -215,6 +215,7 @@ public class RangeTest {
 		toTest = null;
 	}
 
+	//Tests for shift
 	@Test(expected=NullPointerException.class)
 	public void test_Shift_Null_Range()
 	{
@@ -266,6 +267,7 @@ public class RangeTest {
 		compare = null;
 	}
 
+	//tests for contains
 	@Test
 	public void test_Contains_Greater_Than_Upper()
 	{
