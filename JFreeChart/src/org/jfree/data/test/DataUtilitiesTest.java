@@ -277,10 +277,10 @@ public class DataUtilitiesTest {
 				will(returnValue(5));
 			}
 		});
-		// exercise
+		// exercise - test at row=-1
 		double result = DataUtilities.calculateRowTotal(values, -1);
-		
 		// verify
+		//docs say it will return 0 upon invalid input
 		assertEquals(0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
@@ -408,9 +408,10 @@ public class DataUtilitiesTest {
 				will(returnValue(5));
 			}
 		});
-		// exercise
+		// exercise - test at row > numRows
 		double result = DataUtilities.calculateRowTotal(values, 5);
 		// verify
+		//docs say it will return 0 upon invalid input
 		assertEquals(0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
@@ -572,6 +573,8 @@ public class DataUtilitiesTest {
 				//but it is not thrown, they must check if numerator is 0 then they don't do the division
 				DataUtilities.getCumulativePercentages(values);
 	}
+	
+	//TODO: More tests for getCumulativePercentage()
 
 
 }
