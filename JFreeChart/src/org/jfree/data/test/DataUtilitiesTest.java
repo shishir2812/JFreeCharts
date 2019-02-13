@@ -36,6 +36,7 @@ public class DataUtilitiesTest {
 		double result = DataUtilities.calculateColumnTotal(values, -1);
 		// verify
 		//docs say it will return 0 upon invalid input
+		//instead, it does try to get the values at index=-1, causing unexpected invocation jMock.exception 
 		assertEquals(0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
@@ -167,6 +168,7 @@ public class DataUtilitiesTest {
 		double result = DataUtilities.calculateColumnTotal(values, 5);
 		// verify
 		//docs say it will return 0 upon invalid input
+		//instead, it does try to get the values at index=5, causing unexpected invocation jMock.exception 
 		assertEquals(0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
@@ -281,6 +283,7 @@ public class DataUtilitiesTest {
 		double result = DataUtilities.calculateRowTotal(values, -1);
 		// verify
 		//docs say it will return 0 upon invalid input
+		//instead, it does try to get the values at index=-1, causing unexpected invocation jMock.exception 
 		assertEquals(0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
@@ -412,6 +415,7 @@ public class DataUtilitiesTest {
 		double result = DataUtilities.calculateRowTotal(values, 5);
 		// verify
 		//docs say it will return 0 upon invalid input
+		//instead, it does try to get the values at index=-5, causing unexpected invocation jMock.exception 
 		assertEquals(0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
