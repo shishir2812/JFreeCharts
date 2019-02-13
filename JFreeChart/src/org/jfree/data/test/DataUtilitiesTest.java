@@ -2,7 +2,6 @@ package org.jfree.data.test;
 
 import org.jfree.data.DataUtilities;
 import org.jfree.data.KeyedValues;
-import org.jfree.data.Value;
 import org.jfree.data.Values2D;
 
 import static org.junit.Assert.*;
@@ -33,9 +32,10 @@ public class DataUtilitiesTest {
 				will(returnValue(5));
 			}
 		});
-		// exercise
+		// exercise - testing index -1
 		double result = DataUtilities.calculateColumnTotal(values, -1);
 		// verify
+		//docs say it will return 0 upon invalid input
 		assertEquals(0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
@@ -163,9 +163,10 @@ public class DataUtilitiesTest {
 				will(returnValue(5));
 			}
 		});
-		// exercise
+		// exercise - testing index > numCols
 		double result = DataUtilities.calculateColumnTotal(values, 5);
 		// verify
+		//docs say it will return 0 upon invalid input
 		assertEquals(0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
