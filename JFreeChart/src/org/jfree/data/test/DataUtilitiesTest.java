@@ -517,6 +517,60 @@ public class DataUtilitiesTest {
 				// tear-down: NONE in this test method
 			
 	}
+	
+	@Test(expected = ArithmeticException.class)
+	public void getCumulativePercentageDivByZero(){
+		//Setup
+		Mockery mockingContext = new Mockery();
+		final KeyedValues values = mockingContext.mock(KeyedValues.class);
+		mockingContext.checking(new Expectations() {
+			{
+				
+				atLeast(1).of(values).getItemCount();
+				will(returnValue(2));
+				
+				//key/value pair 
+				atLeast(1).of(values).getKey(0); //get Key at index 0
+				will(returnValue(0));			
+				atLeast(1).of(values).getValue(0); // get value at key=0
+				will(returnValue(0));
+				
+				
+				//key/value pair 
+				atLeast(1).of(values).getKey(1);
+				will(returnValue(1));			
+				atLeast(1).of(values).getValue(1);
+				will(returnValue(0));
+				
+			}
+		});
+		Mockery mockingContext2 = new Mockery();
+		final KeyedValues expected = mockingContext2.mock(KeyedValues.class);
+		mockingContext2.checking(new Expectations() {
+			{
+				
+				atLeast(1).of(expected).getItemCount();
+				will(returnValue(2));
+				
+				//key/value pair 
+				atLeast(1).of(expected).getKey(0); //get Key at index 0
+				will(returnValue(0));			
+				atLeast(1).of(expected).getValue(0); // get value at key=0
+				will(returnValue(0)); // this is the expected cumulative percentage 
+				
+				//key/value pair 
+				atLeast(1).of(expected).getKey(1);
+				will(returnValue(1));			
+				atLeast(1).of(expected).getValue(1);
+				will(returnValue(0));
+				
+			}
+		});
+				// exercise
+				//expect a div by zero (arithmetic exception) here
+				//but it is not thrown, they must check if numerator is 0 then they don't do the division
+				DataUtilities.getCumulativePercentages(values);
+	}
 
 
 }
