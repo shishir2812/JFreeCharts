@@ -158,7 +158,6 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided lower bound < toTests upper bound", true, result);
 		toTest = null;
 	}
-
 	@Test
 	public void test_Intersects_Provided_Lowerbound_Equal_To_Upperbound()
 	{
@@ -167,7 +166,6 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided lower bound == toTests upper bound", true, result);
 		toTest = null;
 	}
-
 	@Test
 	public void test_Intersects_Provided_Lowerbound_Greater_Than_Upperbound()
 	{
@@ -176,7 +174,6 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided lower bound > toTests upper bound", false, result);
 		toTest = null;
 	}
-
 	@Test
 	public void test_Intersects_provided_Upperbound_Less_Than_Lowerbound()
 	{
@@ -185,8 +182,6 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided Upper bound < toTests lower bound", false, result);
 		toTest = null;
 	}
-
-
 	@Test
 	public void test_Intersects_provided_Upperbound_Equal_To_Lowerbound()
 	{
@@ -195,7 +190,6 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided Upper bound == toTests lower bound", true, result);
 		toTest = null;
 	}
-
 	@Test
 	public void test_Intersects_provided_Upperbound_Greater_Than_Lowerbound()
 	{
@@ -205,7 +199,6 @@ public class RangeTest {
 		assertEquals("Testing intersects() where the provided Upper bound > toTests lower bound", true, result);
 		toTest = null;
 	}
-
 	@Test
 	public void test_Intersects_Provided_Range_Contained_Within_Range()
 	{
@@ -215,14 +208,14 @@ public class RangeTest {
 		toTest = null;
 	}
 
-	//Tests for shift
+	
+	//Tests for shift()
 	@Test(expected=NullPointerException.class)
 	public void test_Shift_Null_Range()
 	{
 		Range toTest = null;
 		Range.shift(toTest, 5);
 	}
-
 	@Test
 	public void test_Shift_Neither_Bound_Hits_Zero()
 	{
@@ -233,7 +226,6 @@ public class RangeTest {
 		toTest = null;
 		compare = null;
 	}
-
 	@Test
 	public void test_Shift_Upper_Bound_Hits_Zero()
 	{
@@ -244,7 +236,6 @@ public class RangeTest {
 		toTest = null;
 		compare = null;
 	}
-
 	@Test
 	public void test_Shift_Lower_Bound_Hits_Zero()
 	{
@@ -255,7 +246,6 @@ public class RangeTest {
 		toTest = null;
 		compare = null;
 	}
-
 	@Test
 	public void test_Shift_Both_Bounds_Hit_Zero()
 	{
@@ -267,7 +257,8 @@ public class RangeTest {
 		compare = null;
 	}
 
-	//tests for contains
+	
+	//tests for contains()
 	@Test
 	public void test_Contains_Greater_Than_Upper()
 	{
@@ -276,7 +267,6 @@ public class RangeTest {
 		assertEquals("Testing contains with a value greater than the upper bound of range", false, result);
 		toTest = null;
 	}
-
 	@Test
 	public void test_Contains_Equal_To_Upper()
 	{
@@ -285,7 +275,6 @@ public class RangeTest {
 		assertEquals("Testing contains with a value equal to the upper bound of range", true, result);
 		toTest = null;
 	}
-
 	@Test
 	public void test_Contains_In_Middle()
 	{
@@ -294,7 +283,6 @@ public class RangeTest {
 		assertEquals("Testing contains with a value in the middle of the specified range:", true, result);
 		toTest = null;
 	}
-
 	@Test
 	public void test_Contains_Equal_To_Lower()
 	{

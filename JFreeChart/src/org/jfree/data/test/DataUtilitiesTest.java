@@ -20,7 +20,6 @@ public class DataUtilitiesTest {
 		DataUtilities.calculateColumnTotal(null, 0);
 		// throws NullPointerException instead
 	}
-
 	@Test
 	public void calculateColumnTotalBLB() {
 		// setup
@@ -40,7 +39,6 @@ public class DataUtilitiesTest {
 		assertEquals("Attempting to acess column -1 should return 0",0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateColumnTotalLB() {
 		// setup
@@ -68,7 +66,6 @@ public class DataUtilitiesTest {
 		assertEquals("Summing column 0 should return 5",5, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateColumnTotalALB() {
 		// setup
@@ -96,7 +93,6 @@ public class DataUtilitiesTest {
 		assertEquals("Acessing column 1 should return 5",5, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateColumnTotalBUB() {
 		// setup
@@ -124,7 +120,6 @@ public class DataUtilitiesTest {
 		assertEquals("Acessing column 3 should return 5",5, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateColumnTotalUB() {
 		// setup
@@ -152,7 +147,6 @@ public class DataUtilitiesTest {
 		assertEquals("Acessing column 4 should return 5",5, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateColumnTotalAUB() {
 		// setup
@@ -172,7 +166,6 @@ public class DataUtilitiesTest {
 		assertEquals("Acessing column 5 (out of bounds) should return 0",0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateColumnTotalNOM() {
 		// setup
@@ -201,13 +194,13 @@ public class DataUtilitiesTest {
 		// tear-down: NONE in this test method
 	}
 
+	
 	// tests for calculateRowTotal()
 	@Test(expected = InvalidParameterException.class)
 	public void calculateRowTotalForNullTable() {
 		DataUtilities.calculateRowTotal(null, 0);
 		// throws NullPointerException instead
 	}
-
 	@Test
 	public void calculateRowTotalBLB() {
 		// setup
@@ -227,7 +220,6 @@ public class DataUtilitiesTest {
 		assertEquals("Acessing row -1 should return 0",0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateRowTotalLB() {
 		// setup
@@ -255,7 +247,6 @@ public class DataUtilitiesTest {
 		assertEquals("Summing row 0 should return 5",5, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateRowTotalALB() {
 		// setup
@@ -283,7 +274,6 @@ public class DataUtilitiesTest {
 		assertEquals("Summing row 1 should return 5",5, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateRowTotalBUB() {
 		// setup
@@ -311,7 +301,6 @@ public class DataUtilitiesTest {
 		assertEquals("Summing row 3 should return 5",5, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateRowTotalUB() {
 		// setup
@@ -339,7 +328,6 @@ public class DataUtilitiesTest {
 		assertEquals("Summing row 4 should return 5",5, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateRowTotalAUB() {
 		// setup
@@ -359,7 +347,6 @@ public class DataUtilitiesTest {
 		assertEquals("Attempting to access row 5 (out of bound) should return 0",0, result, .000000001d);
 		// tear-down: NONE in this test method
 	}
-
 	@Test
 	public void calculateRowTotalNOM() {
 		// setup
@@ -388,13 +375,13 @@ public class DataUtilitiesTest {
 		// tear-down: NONE in this test method
 	}
 
-	// tests for createNumberArray
+	
+	// tests for createNumberArray()
 	@Test(expected = InvalidParameterException.class)
 	public void createNumberArrayNull() {
 		DataUtilities.createNumberArray(null);
 		// throws IllegalArgumentException instead
 	}
-
 	@Test
 	public void createNumberArrayEmpty() {
 		double a[] = {};
@@ -402,7 +389,6 @@ public class DataUtilitiesTest {
 		Number expected[] = {};
 		assertArrayEquals("Arrays should be equal",expected, r);
 	}
-
 	@Test
 	public void createNumberArrayValid() {
 		double a[] = { 1.5, 2.5, 3.5, 4.5};
@@ -411,13 +397,13 @@ public class DataUtilitiesTest {
 		assertArrayEquals("Arrays should be equal",expected, r);
 	}
 
-	// tests for createNumberArray2D
+	
+	// tests for createNumberArray2D()
 	@Test(expected = InvalidParameterException.class)
 	public void createNumberArray2DNull() {
 		DataUtilities.createNumberArray2D(null);
 		// throws IllegalArgumentException instead
 	}
-
 	@Test
 	public void createNumberArray2DEmpty() {
 		double a[][] = {{}};
@@ -426,7 +412,6 @@ public class DataUtilitiesTest {
 		assertArrayEquals("Arrays should be equal",expected, r);
 		
 	}
-
 	@Test
 	public void createNumberArray2DValid() {
 		double a[][] = { { 1, 2, 3 }, { 1.5, 2.5, 3.5 }, { -2, -1, 0 } };
@@ -434,14 +419,12 @@ public class DataUtilitiesTest {
 		Number expected[][] = { { 1.0, 2.0, 3.0 }, { 1.5, 2.5, 3.5 }, { -2.0, -1.0, 0.0 } };
 		assertArrayEquals("Arrays should be equal",expected, r);
 	}
-
 	@Test(expected = InvalidParameterException.class)
 	public void createNumberArray2DInnerNull() {
 		double a[][] = { { 1, 2, 3 }, null, { -2, -1, 0 } };
 		DataUtilities.createNumberArray2D(a);
 		// throws IllegalArgumentException instead
 	}
-
 	@Test
 	public void createNumberArray2DInnerEmpty() {
 		double a[][] = { { 1, 2, 3 }, {}, { -2, -1, 0 } };
@@ -451,7 +434,7 @@ public class DataUtilitiesTest {
 	}
 
 
-	//tests for getCumulativePercentage
+	//tests for getCumulativePercentage()
 	@Test(expected = InvalidParameterException.class)
 	public void getCumulativePercentageForNullTable() {
 		DataUtilities.getCumulativePercentages(null);
@@ -526,7 +509,6 @@ public class DataUtilitiesTest {
 		// tear-down: NONE in this test method
 
 	}
-
 	@Test(expected = ArithmeticException.class)
 	public void getCumulativePercentageDivByZero(){
 		//Setup
