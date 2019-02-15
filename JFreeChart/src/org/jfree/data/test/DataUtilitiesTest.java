@@ -395,19 +395,19 @@ public class DataUtilitiesTest {
 		// throws IllegalArgumentException instead
 	}
 
-	@Test(expected = InvalidParameterException.class)
+	@Test
 	public void createNumberArrayEmpty() {
 		double a[] = {};
-		DataUtilities.createNumberArray(a);
-
-		// throws an AssertionError instead
+		Number r[] = DataUtilities.createNumberArray(a);
+		Number expected[] = {};
+		assertArrayEquals("Arrays should be equal",expected, r);
 	}
 
 	@Test
 	public void createNumberArrayValid() {
-		double a[] = { 1.5, 2.5, 3.5};
+		double a[] = { 1.5, 2.5, 3.5, 4.5};
 		Number r[] = DataUtilities.createNumberArray(a);
-		Number expected[] = { 1.5, 2.5, 3.5};
+		Number expected[] = { 1.5, 2.5, 3.5, 4.5};
 		assertArrayEquals("Arrays should be equal",expected, r);
 	}
 
@@ -418,12 +418,12 @@ public class DataUtilitiesTest {
 		// throws IllegalArgumentException instead
 	}
 
-	@Test(expected = InvalidParameterException.class)
-
+	@Test
 	public void createNumberArray2DEmpty() {
-		double a[][] = { {} };
-		DataUtilities.createNumberArray2D(a);
-		// throws an AssertionError instead (because it didnt throw the expected exception)
+		double a[][] = {{}};
+		Number r[][] = DataUtilities.createNumberArray2D(a);
+		Number expected[][] = {{}};
+		assertArrayEquals("Arrays should be equal",expected, r);
 		
 	}
 
